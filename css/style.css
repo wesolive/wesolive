@@ -1,0 +1,461 @@
+/******** Reset *******************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul {
+  list-style: none;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+}
+
+/******** ROOT *****/
+:root {
+  /* espaçamento  */
+  --header-height: 4.5rem;
+
+  /* cores */
+  --gradient: radial-gradient(
+    100% 100% at 49.87% 100%,
+    hsl(260, 87%, 25%) 0%,
+    hsl(261, 88%, 10%) 71.68%
+  );
+  --body: hsl(0 0% 100%);
+  --primary: hsl(260, 87%, 25%);
+  --second: hsl(261, 88%, 10%);
+  --text-dark: hsl(0 0% 0% 100%);
+  --text-light: hsl(0 0% 100%);
+
+  /*fontes*/
+  --title-font: 'Poppins', sans-serif;
+  --text-font: 'DM Sans', sans-serif;
+
+  /*fontes size*/
+  --title-size: 1.875rem;
+  --text-size: 1rem;
+}
+
+/******* BASE ****************************/
+.container {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+.section {
+  padding: calc(5rem + var(--header-height));
+}
+
+.grid {
+  display: grid;
+  gap: 1.875rem;
+}
+.logo {
+  font: 700 1.31rem var(--title-font);
+  color: var(--primary);
+}
+.logo span {
+  color: var(--body);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--primary);
+}
+
+a {
+  text-decoration: none;
+}
+.title-menu {
+  font: 700 var(--title-size) var(--title-font);
+  color: var(--text-dark);
+  margin-bottom: 1.875rem;
+}
+.title {
+  font: 700 var(--title-size) var(--title-font);
+  color: var(--text-light);
+  margin-bottom: 1.875rem;
+}
+.text {
+  text-align: center;
+  font: 400 var(--text-size) var(--text-font);
+  color: var(--text-light);
+  box-sizing: border-box;
+}
+.text-alt {
+  text-align: center;
+  font: 400 var(--text-size) var(--text-font);
+  color: var(--text-dark);
+  box-sizing: border-box;
+}
+
+.icon-butom {
+  width: 5rem;
+  margin: 0 auto;
+}
+.icon-butom a {
+  transition: 0.3s;
+  display: inline-block;
+}
+.icon-butom a:hover {
+  transform: translateY(-8px);
+}
+.icon-butom a i {
+  color: var(--body);
+  font-size: 2rem;
+  grid-auto-flow: column;
+}
+
+.button {
+  height: 3.5rem;
+  background: var(--primary);
+  color: var(--text-light);
+  display: inline-flex;
+  align-items: center;
+  padding: 0 2rem;
+  border-radius: 0.25rem;
+}
+/************************** LAYOUT********** */
+#header {
+  width: 100%;
+  border-bottom: 1px solid rgba(204, 204, 204, 0.719);
+  display: flex;
+  position: fixed;
+  z-index: 1;
+  background: var(--body);
+  top: 0;
+  left: 0;
+}
+/*header menor que o scroll*/
+#header.scroll {
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
+}
+
+/*********************************navegation *******/
+nav {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+nav .menu {
+  opacity: 0;
+  visibility: hidden;
+  top: -20;
+  transition: 0.2s;
+}
+
+nav ul li {
+  text-align: center;
+}
+nav ul li a {
+  position: relative;
+  transition: color 0.2s;
+}
+nav ul li a:hover,
+nav ul li a.active {
+  color: var(--primary);
+}
+nav ul li a::after {
+  content: '';
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  position: absolute;
+  left: 0;
+  bottom: -1.5rem;
+  transition: width 0.2s;
+}
+nav ul li a:hover::after,
+nav ul li a.active::after {
+  width: 100%;
+}
+
+/* mostrar menu */
+nav.show .menu {
+  opacity: 1;
+  visibility: visible;
+  background: var(--body);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-content: center;
+}
+
+nav.show ul.grid {
+  gap: 4rem;
+}
+
+nav .icon-cross {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  right: 1.5rem;
+}
+
+nav.show div.icon-cross {
+  visibility: visible;
+  opacity: 1;
+}
+.toggle {
+  color: var(--primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+/****** home **********************/
+
+#home {
+  background: var(--gradient);
+  height: 46.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#home img {
+  width: 100%;
+}
+
+#home .buttom:hover {
+  width: 4.2rem;
+  transition: width 0.2s;
+}
+/******* about **********************/
+
+#about .title {
+  color: var(--primary);
+}
+
+#about .skils ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+#about .skils ul li {
+  width: 3.125rem;
+  height: 3.125rem;
+  background: var(--text-light);
+  border-radius: 4px;
+  border-bottom: 4px solid var(--primary);
+  box-shadow: 2px 2px 2px hsl(0, 1%, 68%);
+}
+
+/******* works **********************/
+#works {
+  background: var(--gradient);
+}
+#works header {
+  text-align: center;
+}
+.cards.grid {
+  gap: 1.5rem;
+}
+.cards {
+  padding: 3.625rem 2rem;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
+  border-bottom: 0.25rem solid var(--base-color);
+  border-radius: 0.25rem 0.25rem 0 0;
+  text-align: center;
+}
+.cards .card a img {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  clear: both;
+}
+/******contact************************************/
+#contact {
+  background-color: var(--text-light);
+}
+#contact .grid {
+  gap: 4rem;
+}
+#contact .title {
+  color: var(--primary);
+}
+#contact .text {
+  color: var(--text-dark);
+}
+#contact .text p {
+  margin-bottom: 2rem;
+}
+#contact ul li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+#contact ul li {
+  font: 400 var(--text-size) var(--text-font);
+}
+#contact ul li i {
+  color: var(--primary);
+}
+
+#contact .button i,
+#contact ul li i {
+  font-size: 1.5rem;
+  margin-right: 0.7rem;
+}
+footer {
+  background-color: #1e054f;
+}
+footer.section {
+  padding: 4rem 0;
+}
+footer .logo {
+  color: var(--body);
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+footer .logo span {
+  color: var(--primary);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--body);
+}
+footer .brand p {
+  color: var(--text-light);
+  margin-bottom: 0.75rem;
+  font: 400 var(--text-size) var(--text-font);
+}
+footer i {
+  font-size: 1.5rem;
+  color: var(--text-light);
+}
+footer .social a {
+  margin-right: 2rem;
+}
+
+.back-to-top {
+  background: rgba(194, 193, 193, 0.26);
+  color: var(--primary);
+
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+
+  padding: 0.5rem;
+  clip-path: circle();
+
+  font-size: 1.5rem;
+  line-height: 0;
+
+  visibility: hidden;
+  opacity: 0;
+
+  transition: 0.3s;
+  transform: translateY(100%);
+}
+.back-to-top.show {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+/*************** MEDIAS QUERIES ************************************/
+/*** devices: 1200 > ***/
+/*** devices: 1023 > ***/
+/*** devices: 992 > ***/
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1120px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .section {
+    padding: 10rem 0;
+  }
+  .section header {
+    max-width: 32rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .icon-butom {
+    width: 24rem;
+    margin: 1.875rem 0;
+    font-size: 3.75rem;
+  }
+  nav .menu {
+    opacity: 1;
+    visibility: visible;
+    top: 0;
+  }
+  nav .menu ul {
+    display: flex;
+    gap: 2rem;
+  }
+
+  nav .menu ul li a.title-menu.active {
+    font-weight: bold;
+    -webkit-font-smoothing: auto;
+  }
+  nav .menu ul li a.title-menu {
+    font: 400 var(--text-size) var(--text-font);
+    -webkit-font-smoothing: antialiased;
+  }
+  nav .icon-menu {
+    display: none;
+  }
+
+  /******* main ********/
+
+  main {
+    margin-top: var(--header-height);
+  }
+  /******* home ************/
+
+  #home .container {
+    align-items: center;
+    grid-auto-flow: column;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  #home .foto-home {
+    order: 1;
+  }
+  #home .text {
+    order: 0;
+    max-width: 24rem;
+    text-align: left;
+  }
+}
+/**** about ****/
+#about .container {
+  grid-auto-flow: column;
+  margin: 0 auto;
+}
+#about .text-alt {
+  max-width: 30rem;
+  margin: 0 auto;
+}
+#works .cards {
+  grid-template-columns: 2fr 1fr 2fr;
+}
+/**** contact *******/
+#contact .container {
+  grid-auto-flow: column;
+  align-items: center;
+}
+#contact .text {
+  max-width: 25rem;
+  text-align: left;
+}
+
+/****** footer *****/
+footer .section {
+  padding: 3.75rem 0;
+}
+footer .container {
+  grid-auto-flow: column;
+  align-items: center;
+  justify-content: space-between;
+}
+footer .logo {
+  font-size: 2.25rem;
+}
